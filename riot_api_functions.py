@@ -40,8 +40,9 @@ Returns:
 - id -- id of the requested summoner
 - puuid -- puuid of the requested summoner
 '''
-def get_summoner_identifiers(region, name, api_key):
-    summoner_values = riot_api_get(region, f"lol/summoner/v4/summoners/by-name/{name}", {"api_key": api_key})
+def get_summoner_identifiers(region_code, region_name, name, api_key):
+    account_values = riot_api_get(region_name, f"riot/account/v1/accounts/by-riot-id/{name}/EUW", {"api_key": api_key})
+    summoner_values = riot_api_get(region_code, f"lol/summoner/v4/summoners/by-puuid/{account_values['puuid']}", {"api_key": api_key})
     return summoner_values["id"], summoner_values["puuid"]
 
 

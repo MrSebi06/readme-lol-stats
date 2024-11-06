@@ -401,7 +401,7 @@ def main():
         name = config["Summoner Name"]
         region_code = config["Platform Routing Region Code"]
         region_name = config["Regional Routing Name"]
-        id, puuid = rf.get_summoner_identifiers(region_code, name, key)
+        id, puuid = rf.get_summoner_identifiers(region_code, region_name, name, key)
         rank_data = rf.get_summoner_rank(region_code, id, key)
         extra_data["Rank"] = rank_data["tier"]
         global_data = {"Total Matches":  total_matches_to_look}
